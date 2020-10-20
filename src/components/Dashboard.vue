@@ -1,10 +1,7 @@
 <template>
   <v-container>
     <div class="head-title">
-      <img
-        style="animation-delay: 3.5s; animation-duration: 800ms"
-        src="@/assets/coronavirus.svg"
-      />
+      <img src="@/assets/coronavirus.svg" />
       <h1 class="display-2">Covid19</h1>
       <h1 class="title font-weight-light">Realtime Tracking</h1>
     </div>
@@ -18,7 +15,7 @@
         placeholder="Select Country"
       ></model-select>
       <v-alert class="mt-5" width="500px" type="error" v-if="countryError"
-        >Sorry! The country's information not found.</v-alert
+        >Sorry! The country information has not found</v-alert
       >
       <div>
         <p class="body-1 mt-5 font-weight-light">
@@ -31,30 +28,53 @@
     <section class="local">
       <div class="d-inline-flex mx-4">
         <div class="card">
-          <h1 class="title font-weight-light">Posifif</h1>
+          <div class="loading-container-1" v-if="loading">
+            <div class="loadingio-spinner-rolling-854z1bkfq6j">
+              <div class="ldio-yhtmvc4jfe">
+                <div></div>
+              </div>
+            </div>
+          </div>
+          <h1 class="title font-weight-light">Confirmed</h1>
           <p class="display-2">
             {{ countriesUpdate.confirmed | putComma }}
           </p>
           <p class="subtitle-2 font-weight-light">
-            +{{ todayInCountries }} Dari hari kemarin
+            +{{ todayInCountries }} From Past Yesterday
           </p>
         </div>
       </div>
       <div class="d-inline-flex mx-4">
         <div class="card">
-          <h1 class="title font-weight-light">Meninggal</h1>
-          <p class="display-2">{{ countriesUpdate.deaths | putComma }}</p>
+          <div class="loading-container-2" v-if="loading">
+            <div class="loadingio-spinner-rolling-854z1bkfq6j">
+              <div class="ldio-yhtmvc4jfe">
+                <div></div>
+              </div>
+            </div>
+          </div>
+          <h1 class="title font-weight-light">Death</h1>
+          <p class="display-2">
+            {{ countriesUpdate.deaths | putComma }}
+          </p>
           <p class="subtitle-2 font-weight-light">
-            Total {{ countryDeathPercentage }}% Telah Meninggal
+            Total {{ countryDeathPercentage }}% Death
           </p>
         </div>
       </div>
       <div class="d-inline-flex mx-4">
         <div class="card">
-          <h1 class="title font-weight-light">Sembuh</h1>
+          <div class="loading-container-3" v-if="loading">
+            <div class="loadingio-spinner-rolling-854z1bkfq6j">
+              <div class="ldio-yhtmvc4jfe">
+                <div></div>
+              </div>
+            </div>
+          </div>
+          <h1 class="title font-weight-light">Recovered</h1>
           <p class="display-2">{{ countriesUpdate.recovered | putComma }}</p>
           <p class="subtitle-2 font-weight-light">
-            Total {{ countryRecoveredPercentage }}% Telah Sembuh
+            Total {{ countryRecoveredPercentage }}% Recovered
           </p>
         </div>
       </div>
@@ -70,19 +90,19 @@
       </div>
       <div class="d-inline-flex mx-4">
         <div class="card">
-          <h1 class="title font-weight-light">Posifif</h1>
+          <h1 class="title font-weight-light">Confirmed</h1>
           <p class="display-2">{{ global.confirmed | putComma }}</p>
           <p class="subtitle-2 font-weight-light">
-            +{{ todayInGlobal }} Dari hari kemarin
+            +{{ todayInGlobal }} From Past Yesterday
           </p>
         </div>
       </div>
       <div class="d-inline-flex mx-4">
         <div class="card">
-          <h1 class="title font-weight-light">Meninggal</h1>
+          <h1 class="title font-weight-light">Death</h1>
           <p class="display-2">{{ global.deaths | putComma }}</p>
           <p class="subtitle-2 font-weight-light">
-            {{ globalDeathPercentage }}% Telah meninggal
+            Total {{ globalDeathPercentage }}% Death
           </p>
         </div>
       </div>
@@ -91,7 +111,7 @@
           <h1 class="title font-weight-light">Sembuh</h1>
           <p class="display-2">{{ global.recovered | putComma }}</p>
           <p class="subtitle-2 font-weight-light">
-            {{ globalRecoveredPercentage }}% Telah Sembuh
+            Total {{ globalRecoveredPercentage }}% Recovered
           </p>
         </div>
       </div>
@@ -179,6 +199,9 @@ export default {
       }
       this.countryError = false;
       this.loading = true;
+      // setTimeout(() => {
+      //   this.loading;
+      // }, 5000);
 
       const { data } = await axios
         .get(`${this.baseEndpoint}/countries/${this.selectedCountry.value}`)
@@ -324,5 +347,62 @@ export default {
 }
 .local {
   margin: 40px 0;
+}
+
+@keyframes ldio-yhtmvc4jfe {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.loading-container-1 {
+  position: absolute;
+  top: 475px;
+  left: 360px;
+}
+
+.loading-container-2 {
+  position: absolute;
+  top: 475px;
+  left: 640px;
+}
+.loading-container-3 {
+  position: absolute;
+  top: 475px;
+  left: 928px;
+}
+
+.ldio-yhtmvc4jfe div {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border: 15px solid #2bfcfc;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+.ldio-yhtmvc4jfe div {
+  animation: ldio-yhtmvc4jfe 0.4s linear infinite;
+  top: 50px;
+  left: 50px;
+}
+.loadingio-spinner-rolling-854z1bkfq6j {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+.ldio-yhtmvc4jfe {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.5);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-yhtmvc4jfe div {
+  box-sizing: content-box;
 }
 </style>

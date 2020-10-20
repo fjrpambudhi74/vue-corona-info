@@ -21,21 +21,6 @@
           >{{ link.title }}</v-btn
         >
       </v-toolbar-items>
-      <!-- <v-list-tile
-        class="mr-5"
-        v-for="link in links"
-        :key="link.title"
-        router
-        :to="link.route"
-      >
-        <v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title class="link text--lighten-2 mr-3">
-              {{ link.title }}
-            </v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile-action>
-      </v-list-tile> -->
     </v-toolbar>
   </nav>
 </template>
@@ -46,7 +31,7 @@ export default {
     return {
       links: [
         { title: "Dashboard", route: "/" },
-        { title: "Information", route: "/" },
+        { title: "Wiki", route: "/wiki" },
         { title: "About", route: "/" },
       ],
     };

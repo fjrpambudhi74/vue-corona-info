@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '../components/Dashboard.vue'
-import Info from '../components/Info.vue'
+import Wiki from '../components/Wiki.vue'
 import About from '../components/About.vue'
 
 Vue.use(Router)
@@ -19,9 +19,9 @@ export default new Router({
       }
     },
     {
-      path: '/Info',
-      name: 'Info',
-      component: Info,
+      path: '/wiki',
+      name: 'Wiki',
+      component: Wiki,
       meta: {
         auth: true,
         title: 'Covid19 Information'
