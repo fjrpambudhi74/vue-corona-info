@@ -32,7 +32,6 @@ export default {
       links: [
         { title: "Dashboard", route: "/" },
         { title: "Wiki", route: "/wiki" },
-        { title: "About", route: "/" },
       ],
     };
   },

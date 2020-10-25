@@ -360,18 +360,18 @@ export default {
 .loading-container-1 {
   position: absolute;
   top: 475px;
-  left: 360px;
+  left: 405px;
 }
 
 .loading-container-2 {
   position: absolute;
   top: 475px;
-  left: 640px;
+  left: 663px;
 }
 .loading-container-3 {
   position: absolute;
   top: 475px;
-  left: 928px;
+  left: 907px;
 }
 
 .ldio-yhtmvc4jfe div {
